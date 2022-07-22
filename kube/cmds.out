@@ -7,3 +7,5 @@
 
  2100  terraform destroy
 
+ kubectl port-forward -n k8s-ns-by-tf terraform-example-764db4f86d-pnp2f 30201:80
+

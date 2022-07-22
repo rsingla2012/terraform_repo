@@ -34,6 +34,10 @@ resource "kubernetes_deployment" "example" {
           image = "nginx:1.21.6"
           name  = "example"
 
+          port {
+            container_port = 80
+          }
+
           resources {
             limits = {
               cpu    = "0.5"
@@ -47,5 +51,27 @@ resource "kubernetes_deployment" "example" {
         }
       }
     }
+  }
+}
+
+resource "kubernetes_service" "example" {
+  metadata {
+    name = "terraform-example-svc"
+    namespace = "k8s-ns-by-tf"
+  }
+  spec {
+    selector {
+      match_labels = {
+        test = "MyExampleApp"
+      }
+    }
+
+    port {
+      node_port   = 30201
+      port        = 80
+      target_port = 80
+    }
+
+    type = "NodePort"
   }
 }
