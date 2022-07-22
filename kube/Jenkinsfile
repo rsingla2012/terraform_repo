@@ -6,9 +6,9 @@ pipeline {
          
             steps {
                 script {
-                 def tfHome = tool name: ‘Terraform’
-                 env.PATH = "${tfHome}/bin:${env.PATH}"
-                 }
+					 def tfHome = tool name: ‘Terraform’
+					 env.PATH = "${tfHome}/bin:${env.PATH}"
+				}
                 sh ‘terraform — version’
                 sh 'terraform init'
                 sh 'terraform apply '
