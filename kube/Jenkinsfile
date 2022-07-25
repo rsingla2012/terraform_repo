@@ -1,6 +1,4 @@
-pipeline {
-	agent any 
-	node('Built-In Node'){
+node('Built-In Node'){
 	    tools { terraform 'Terraform' }
 	    stages {
 		stage('Terraform') {
@@ -17,4 +15,4 @@ pipeline {
 		}
 	    }
     }
-}
+
