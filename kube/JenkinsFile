@@ -12,7 +12,9 @@ pipeline {
       }
     }
     stage ('Terraform Apply') {
-      sh "terraform --version"
+      steps {
+          sh "terraform --version" 
+        }
     }
   }
 }
