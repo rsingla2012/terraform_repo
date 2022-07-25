@@ -1,19 +1,19 @@
 pipeline {
-    agent any 
-    tools { terraform 'Terraform' }
-    stages {
-        stage('Terraform') {
-         
-            steps {
-                script {
-			def tfHome = tool name: ‘Terraform’
-			env.PATH = "${tfHome}/bin:${env.PATH}"
-			sh ‘terraform — version’
-			}
-                sh 'terraform init'
-                sh 'terraform apply '
-            }
-        }
-        
+	node('Built-In Node'){
+	    tools { terraform 'Terraform' }
+	    stages {
+		stage('Terraform') {
+
+		    steps {
+			script {
+				def tfHome = tool name: ‘Terraform’
+				env.PATH = "${tfHome}/bin:${env.PATH}"
+				sh ‘terraform — version’
+				}
+			sh 'terraform init'
+			sh 'terraform apply '
+		    }
+		}
+	    }
     }
 }
