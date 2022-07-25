@@ -1,4 +1,5 @@
 pipeline {
+	agent any 
 	node('Built-In Node'){
 	    tools { terraform 'Terraform' }
 	    stages {
